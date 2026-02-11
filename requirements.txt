@@ -1,0 +1,21 @@
+# Python 依赖（需要在 sam3 conda 环境中安装）
+# conda activate sam3
+
+# PyTorch (CUDA) - 请根据本机 CUDA 版本安装
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# SAM3 - 按 SAM3 项目说明安装
+# git clone ... && pip install -e .
+
+# 相机
+pyrealsense2
+
+# 机械臂
+xarm-python-sdk
+
+# 图像处理
+opencv-python
+numpy
+scipy
+scikit-image
+Pillow
