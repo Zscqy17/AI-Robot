@@ -407,10 +407,14 @@ def main():
                             grasp_fail_count = 0
                             grconvnet.grasp_confidence_threshold = ORIGINAL_CONFIDENCE_THRESHOLD
                         elif grasp_fail_count == GRASP_FAIL_LOWER_THRESHOLD:
-                            new_thresh = ORIGINAL_CONFIDENCE_THRESHOLD * 0.5
-                            print('[GRASP] 连续 {} 次失败，降低置信度阈值: {:.3f} -> {:.3f}'.format(
-                                grasp_fail_count, grconvnet.grasp_confidence_threshold, new_thresh))
-                            grconvnet.grasp_confidence_threshold = new_thresh
+                            if grconvnet.grasp_confidence_threshold > 0.10:
+                                new_thresh = max(ORIGINAL_CONFIDENCE_THRESHOLD * 0.5, 0.10)
+                                print('[GRASP] 连续 {} 次失败，降低置信度阈值: {:.3f} -> {:.3f}'.format(
+                                    grasp_fail_count, grconvnet.grasp_confidence_threshold, new_thresh))
+                                grconvnet.grasp_confidence_threshold = new_thresh
+                            else:
+                                print('[GRASP] 置信度阈值已为 {:.3f}，不再降低'.format(
+                                    grconvnet.grasp_confidence_threshold))
                             grasp_point = None  # 让 SAM3 重新搜索
                         else:
                             print('[GRASP] 置信度或深度不足，搜索下一帧... (失败 {}/{})'.format(
