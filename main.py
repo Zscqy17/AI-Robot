@@ -26,9 +26,8 @@ from PIL import Image as PILImage
 # ===================== 路径设置 =====================
 PROJ_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# SAM3 路径（按需修改）
-SAM3_ROOT = r'C:\Users\admin\Desktop\ZhouProjects\SAM3_Test\sam3-main'
-sys.path.insert(0, SAM3_ROOT)
+# SAM3 已集成到项目中，无需外部路径
+SAM3_ROOT = PROJ_ROOT
 
 # 将项目根目录加入路径，确保 inference 模块（GR-ConvNet 权重反序列化）可用
 sys.path.insert(0, PROJ_ROOT)

@@ -9,3 +9,7 @@ build/
 .env
 .venv/
 venv/
+
+# SAM3 大模型文件（需手动下载）
+checkpoints/sam3.pt
+checkpoints/model.safetensors
